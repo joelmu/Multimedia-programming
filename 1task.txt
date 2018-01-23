@@ -1,0 +1,13 @@
+1. Definitions
+a. HTML
+Hypertext Markup Language is basic language for web developing. It creates the basic structure for web site.
+b. CSS
+Cascading Style Sheet is web styling language. It allows making different styling rules for parts of the document.
+c. JavaScript
+JavaScript adds dynamic functionality to the website. It can be used to change, add or remove parts on the web document.
+d. HTTP
+Hypertext Transfer Protocol is used for secured data transfer between websites. Protocols working method is that it opens TCP connection and send request.
+e. HTML5
+It is added functionality for HTML. It added semantic elements, attributes of form elements, graphic elements and multimedia elements.
+f. Dynamic HTML (DHTML)
+It is collective term for more dynamic and animated than normal HTML. It was mostly specified in HTML 4.0. In example it allows user to drag and drop images.

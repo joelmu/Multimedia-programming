@@ -1,0 +1,20 @@
+.rwd {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rwd-1 {
+  width: 80vw;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+img {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 2vh;
+  width: 90vw;
+}
