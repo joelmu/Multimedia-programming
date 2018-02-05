@@ -13,7 +13,7 @@ function callWebSocket() {
     alert("An error occured while connecting " + e.data);
   };
   socket.onclose = function() {
-    alert("The coonection has been closed");
+    alert("The connection has been closed");
   };
 }
 
