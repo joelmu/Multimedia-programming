@@ -1,95 +1,87 @@
-var TaskView = function (model) {
+var ListView = function (model) {
     this.model = model;
-    this.addTaskEvent = new Event(this);
-    this.selectTaskEvent = new Event(this);
-    this.unselectTaskEvent = new Event(this);
-    this.completeTaskEvent = new Event(this);
-    this.deleteTaskEvent = new Event(this);
+    this.addNameEvent = new Event(this);
+    this.selectNameEvent = new Event(this);
+    this.unselectNameEvent = new Event(this);
+    this.deleteNameEvent = new Event(this);
 
     this.init();
 };
 
-TaskView.prototype = {
+ListView.prototype = {
 
     init: function () {
         this.createChildren()
             .setupHandlers()
             .enable();
+        this.show();
     },
 
     createChildren: function () {
         // cache the document object
         this.$container = $('.js-container');
-        this.$addTaskButton = this.$container.find('.js-add-name-button');
-        this.$taskTextBox = this.$container.find('.js-name-textbox');
-        this.$tasksContainer = this.$container.find('.js-names-container');
+        this.$addNameButton = this.$container.find('.js-add-name-button');
+        this.$nameTextBox = this.$container.find('.js-name-textbox');
+        this.$namesContainer = this.$container.find('.js-names-container');
 
         return this;
     },
 
     setupHandlers: function () {
 
-        this.addTaskButtonHandler = this.addTaskButton.bind(this);
-        this.selectOrUnselectTaskHandler = this.selectOrUnselectTask.bind(this);
-        this.completeTaskButtonHandler = this.completeTaskButton.bind(this);
-        this.deleteTaskButtonHandler = this.deleteTaskButton.bind(this);
+        this.addNameButtonHandler = this.addNameButton.bind(this);
+        this.selectOrUnselectNameHandler = this.selectOrUnselectName.bind(this);
+        this.deleteNameButtonHandler = this.deleteNameButton.bind(this);
 
         /**
         Handlers from Event Dispatcher
         */
-        this.addTaskHandler = this.addTask.bind(this);
-        this.clearTaskTextBoxHandler = this.clearTaskTextBox.bind(this);
-        this.setTasksAsCompletedHandler = this.setTasksAsCompleted.bind(this);
-        this.deleteTasksHandler = this.deleteTasks.bind(this);
+        this.addNameHandler = this.addName.bind(this);
+        this.clearNameTextBoxHandler = this.clearNameTextBox.bind(this);
+        this.deleteNamesHandler = this.deleteNames.bind(this);
 
         return this;
     },
 
     enable: function () {
 
-        this.$addTaskButton.click(this.addTaskButtonHandler);
-        this.$container.on('click', '.js-task', this.selectOrUnselectTaskHandler);
-        this.$container.on('click', '.js-complete-name-button', this.completeTaskButtonHandler);
-        this.$container.on('click', '.js-delete-name-button', this.deleteTaskButtonHandler);
+        this.$addNameButton.click(this.addNameButtonHandler);
+        this.$container.on('click', '.js-name', this.selectOrUnselectNameHandler);
+        this.$container.on('click', '.js-delete-name-button', this.deleteNameButtonHandler);
 
         /**
          * Event Dispatcher
          */
-        this.model.addTaskEvent.attach(this.addTaskHandler);
-        this.model.addTaskEvent.attach(this.clearTaskTextBoxHandler);
-        this.model.setTasksAsCompletedEvent.attach(this.setTasksAsCompletedHandler);
-        this.model.deleteTasksEvent.attach(this.deleteTasksHandler);
+        this.model.addNameEvent.attach(this.addNameHandler);
+        this.model.addNameEvent.attach(this.clearNameTextBoxHandler);
+        this.model.deleteNamesEvent.attach(this.deleteNamesHandler);
 
         return this;
     },
 
-    addTaskButton: function () {
-        this.addTaskEvent.notify({
-            task: this.$taskTextBox.val()
+    addNameButton: function () {
+        this.addNameEvent.notify({
+            name: this.$nameTextBox.val()
         });
     },
 
-    completeTaskButton: function () {
-        this.completeTaskEvent.notify();
+    deleteNameButton: function () {
+        this.deleteNameEvent.notify();
     },
 
-    deleteTaskButton: function () {
-        this.deleteTaskEvent.notify();
-    },
+    selectOrUnselectName: function () {
 
-    selectOrUnselectTask: function () {
+        var nameIndex = $(event.target).attr("data-index");
 
-        var taskIndex = $(event.target).attr("data-index");
-
-        if ($(event.target).attr('data-task-selected') == 'false') {
-            $(event.target).attr('data-task-selected', true);
-            this.selectTaskEvent.notify({
-                taskIndex: taskIndex
+        if ($(event.target).attr('data-name-selected') == 'false') {
+            $(event.target).attr('data-name-selected', true);
+            this.selectNameEvent.notify({
+                nameIndex: nameIndex
             });
         } else {
-            $(event.target).attr('data-task-selected', false);
-            this.unselectTaskEvent.notify({
-                taskIndex: taskIndex
+            $(event.target).attr('data-name-selected', false);
+            this.unselectNameEvent.notify({
+                nameIndex: nameIndex
             });
         }
 
@@ -100,23 +92,17 @@ TaskView.prototype = {
     },
 
     buildList: function () {
-        var tasks = this.model.getTasks();
+        var names = this.model.getNames();
+        var counts = this.model.getCounts();
         var html = "";
-        var $tasksContainer = this.$tasksContainer;
+        var $namesContainer = this.$namesContainer;
 
-        $tasksContainer.html('');
+        $namesContainer.html('');
 
         var index = 0;
-        for (var task in tasks) {
+        for (var name in names) {
 
-            if (tasks[task].taskStatus == 'completed') {
-                html += "<div style='color:green;'>";
-            } else {
-                html += "<div>";
-            }
-
-            $tasksContainer.append(html + "<label><input type='checkbox' class='js-task' data-index='" + index + "' data-task-selected='false'>" + tasks[task].taskName + "</label></div>");
-
+            $namesContainer.append(html + "<div><label><input type='checkbox' class='js-name' data-index='" + counts[index] + "' data-name-selected='false'>" + names[name]+ "</label></div>");
             index++;
         }
 
@@ -126,25 +112,19 @@ TaskView.prototype = {
 
     /* -------------------- Handlers From Event Dispatcher ----------------- */
 
-    clearTaskTextBox: function () {
-        this.$taskTextBox.val('');
+    clearNameTextBox: function () {
+        this.$nameTextBox.val('');
     },
 
-    addTask: function () {
+    addName: function () {
         this.show();
     },
 
-    setTasksAsCompleted: function () {
+    deleteNames: function () {
         this.show();
 
     },
-
-    deleteTasks: function () {
-        this.show();
-
-    }
 
     /* -------------------- End Handlers From Event Dispatcher ----------------- */
-
 
 };

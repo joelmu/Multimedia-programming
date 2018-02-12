@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 
+<!-- MVC structure from https://www.awwwards.com/build-a-simple-javascript-app-the-mvc-way.html  -->
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,7 +11,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 </head>
 
-<body>
+<body onload="tryls()">
 
   <!-- navbar -->
 
@@ -35,23 +37,56 @@
 
   <div class="js-container">
 
-        <input type="text" class="js-task-textbox">
-        <input type="button" class="js-add-task-button" value="Add Task">
+        <input type="text" class="js-name-textbox">
+        <input type="button" class="js-add-name-button" value="Add Name">
 
-        <div class="js-tasks-container"></div>
+        <div class="js-names-container"></div>
 
-        <input type="button" class="js-complete-task-button" value="Complete Tasks">
-        <input type="button" class="js-delete-task-button" value="Delete Tasks">
+        <input type="button" class="js-delete-name-button" value="Delete Names">
 
     </div>
 
   <script src="js/mvc/eventDispatcher.js" charset="utf-8"></script>
   <script src="js/mvc/listModel.js" charset="utf-8"></script>
   <script src="js/mvc/listView.js" charset="utf-8"></script>
-  <script src="js/mvc/nameController.js" charset="utf-8"></script>
+  <script src="js/mvc/listController.js" charset="utf-8"></script>
   <script src="js/mvc/app.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  function storageAvailable(type) {
+  try {
+      var storage = window[type],
+          x = '__storage_test__';
+      storage.setItem(x, x);
+      storage.removeItem(x);
+      return true;
+  }
+  catch(e) {
+      return e instanceof DOMException && (
+          // everything except Firefox
+          e.code === 22 ||
+          // Firefox
+          e.code === 1014 ||
+          // test name field too, because code might not be present
+          // everything except Firefox
+          e.name === 'QuotaExceededError' ||
+          // Firefox
+          e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+          // acknowledge QuotaExceededError only if there's something already stored
+          storage.length !== 0;
+  }
+}
+
+function tryls () {
+  if (storageAvailable('localStorage')) {
+  console.log("Yippee! We can use localStorage awesomeness")
+}
+else {
+  console.log("Too bad, no localStorage for us")
+}
+}
+  </script>
 </body>
 
 </html>

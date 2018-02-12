@@ -1,59 +1,70 @@
-var TaskModel = function () {
-     this.tasks = [];
-     this.selectedTasks = [];
-     this.addTaskEvent = new Event(this);
-     this.removeTaskEvent = new Event(this);
-     this.setTasksAsCompletedEvent = new Event(this);
-     this.deleteTasksEvent = new Event(this);
+var ListModel = function () {
+     this.names = [];
+     this.counts = [];
+     this.selectedNames = [];
+     this.addNameEvent = new Event(this);
+     this.removeNameEvent = new Event(this);
+     this.deleteNamesEvent = new Event(this);
 
  };
 
- TaskModel.prototype = {
+ ListModel.prototype = {
 
-     addTask: function (task) {
-         this.tasks.push({
-             taskName: task,
-             taskStatus: 'uncompleted'
-         });
-         this.addTaskEvent.notify();
+     addName: function (name) {
+         // this.names.push({
+         //     nameName: name,
+         // });
+
+         if(!localStorage.count){
+           localStorage.setItem("count",0);
+         }else {
+           var countp = localStorage.getItem("count");
+           countp++;
+           localStorage.setItem("count",countp);
+         }
+         var  count = localStorage.getItem("count");
+         localStorage.setItem("nameName"+count.toString(), name);
+         this.addNameEvent.notify();
      },
 
-     getTasks: function () {
-         return this.tasks;
+     getNames: function () {
+          this.names = [];
+          this.counts = [];
+         for (var i=0; i <= localStorage.count; i++)  {
+           if (localStorage.getItem("nameName"+i.toString()) != null) {
+             this.names.push(localStorage.getItem("nameName"+i.toString()));
+             this.counts.push(i.toString());
+           }
+        };
+
+         return this.names;
      },
 
-     setSelectedTask: function (taskIndex) {
-         this.selectedTasks.push(taskIndex);
+     getCounts: function () {
+       return this.counts;
      },
 
-     unselectTask: function (taskIndex) {
-         this.selectedTasks.splice(taskIndex, 1);
+     setSelectedName: function (nameIndex) {
+         this.selectedNames.push(nameIndex);
      },
 
-     setTasksAsCompleted: function () {
-         var selectedTasks = this.selectedTasks;
-         for (var index in selectedTasks) {
-             this.tasks[selectedTasks[index]].taskStatus = 'completed';
+     unselectName: function (nameIndex) {
+         this.selectedNames.splice(nameIndex, 1);
+     },
+
+     deleteNames: function () {
+         var selectedNames = this.selectedNames.sort();
+
+         for (var i = selectedNames.length - 1; i >= 0; i--) {
+             // this.names.splice(this.selectedNames[i], 1);
+
+             localStorage.removeItem("nameName"+this.selectedNames[i]);
          }
 
-         this.setTasksAsCompletedEvent.notify();
+         // clear the selected names
+         this.selectedNames = [];
 
-         this.selectedTasks = [];
-
-     },
-
-
-     deleteTasks: function () {
-         var selectedTasks = this.selectedTasks.sort();
-
-         for (var i = selectedTasks.length - 1; i >= 0; i--) {
-             this.tasks.splice(this.selectedTasks[i], 1);
-         }
-
-         // clear the selected tasks
-         this.selectedTasks = [];
-
-         this.deleteTasksEvent.notify();
+         this.deleteNamesEvent.notify();
 
      }
 

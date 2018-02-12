@@ -1,5 +1,5 @@
 $(function () {
-     var model = new TaskModel(),
-         view = new TaskView(model),
-         controller = new TaskController(model, view);
+     var model = new ListModel(),
+         view = new ListView(model),
+         controller = new ListController(model, view);
  });
