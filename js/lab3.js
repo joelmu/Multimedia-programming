@@ -13,7 +13,7 @@ function callWebSocket() {
     alert("An error occured while connecting " + e.data);
   };
   socket.onclose = function() {
-    alert("The connection has been closed");
+    console.log("The connection has been closed");
   };
 }
 
@@ -52,4 +52,24 @@ function keyPress(event) {
   if (event.keyCode == 13) {
     send();
   }
+}
+
+
+// audio element functions
+
+var sound = document.getElementById("sound");
+console.log(sound);
+
+function play() {
+  sound.play();
+}
+
+function stop() {
+  sound.pause();
+}
+
+function setVolume(val) {
+  console.log('Before: ' + sound.volume);
+  sound.volume = val / 100;
+  console.log('After: ' + sound.volume);
 }

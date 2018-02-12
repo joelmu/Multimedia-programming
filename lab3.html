@@ -3,7 +3,6 @@
 <head>
     <title>Web sockets</title>
 
-    <script src="js/lab3.js" charset="utf-8"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="css/lab3.css">
 </head>
@@ -45,8 +44,20 @@
     </div>
   </div>
 
+  <a href="mvc-personlist.html"><h1>2. Person list on local storage</h1></a>
+
+  <h1>3. Audio Element</h1>
+
+  <audio id="sound">
+    <source src="http://stream.basso.ﬁ:8000/stream" type="audio/mp3"/>
+  </audio>
+  <button type="button" name="play" class="play" onclick="play()">Play</button>
+  <button type="button" name="stop" class="stop" onclick="stop()">Stop</button>
+  <input id="volume" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+
     <script src="js/jQuery.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script src="js/lab3.js" charset="utf-8"></script>
 </body>
 </html>
