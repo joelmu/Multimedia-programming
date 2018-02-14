@@ -1,8 +1,8 @@
 canvas {
   position: absolute;
   margin-left: 5vw;
-  width: 90vw;
-  height: 60vh;
+  width: 600px;
+  height: 600px;
 
   border: 1px solid black;
 }

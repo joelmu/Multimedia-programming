@@ -1,6 +1,10 @@
 var canvas = document.getElementById("canvas");
+canvas.setAttribute('width', '600');
+canvas.setAttribute('height', '600');
 var ctx = canvas.getContext("2d");
 var preview = document.getElementById("preview");
+preview.setAttribute('width', '600');
+preview.setAttribute('height', '600');
 var prew = preview.getContext("2d");
 var mouseIsDown = false;
 var lineThickness = 1;
