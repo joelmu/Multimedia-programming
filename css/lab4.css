@@ -1,8 +1,8 @@
-#canvas {
+canvas {
+  position: absolute;
   margin-left: 5vw;
   width: 90vw;
   height: 60vh;
 
-  background-color: rgb(157, 152, 151);
   border: 1px solid black;
 }
