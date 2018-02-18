@@ -1,3 +1,5 @@
+// Drawing functions
+
 var canvas = document.getElementById("canvas");
 canvas.setAttribute('width', '600');
 canvas.setAttribute('height', '600');
@@ -13,16 +15,13 @@ var cX, cY, eX, eY;
 preview.onmouseup = function mouseUp(e) {
   mouseIsDown = false;
 
-  // eX = e.clientX - rect.left;
-  // eY = e.clientY - rect.top;
-
-  ctx.strokeStyle = "#000";
+  ctx.strokeStyle = "#36ee3d";
   ctx.beginPath();
   ctx.moveTo(cX, cY);
   ctx.lineTo(eX, eY);
   ctx.stroke();
 
-  // prew.clearRect(0, 0, prew.canvas.width, prew.canvas.height);
+  prew.clearRect(0, 0, prew.canvas.width, prew.canvas.height);
 };
 
 preview.onmousedown = function mouseDown(e) {
@@ -51,3 +50,10 @@ preview.onmouseclick = function mouseclick(e) {
   cY = e.clientY - canvas.offsetTop;
   mouseIsDown = true;
 }
+
+// Game functions
+
+var game = document.getElementById("game");
+var gmx = game.getContext("2d")
+
+var score, ball, time;

@@ -1,8 +1,20 @@
-canvas {
+.drawing-area {
   position: absolute;
-  margin-left: 5vw;
   width: 600px;
   height: 600px;
+
+  border: 1px solid black;
+}
+
+.drawing-container {
+  height: 600px;
+  width: 600px;
+}
+
+#game {
+  /* margin-left: 5vw; */
+  width: 600px;
+  height: 576px;
 
   border: 1px solid black;
 }

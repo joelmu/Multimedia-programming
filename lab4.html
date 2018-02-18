@@ -36,10 +36,23 @@
     </nav>
 
 
-  <h1>1. Very simple drawing application</h1>
+<div class="container d-flex flex-row justify-content-around">
+  <div class="mr-5">
+    <h1>1. Simple drawing application</h1>
 
-  <canvas id="canvas"></canvas>
-  <canvas id="preview"></canvas>
+    <div class="drawing-container">
+      <canvas id="canvas" class="drawing-area"></canvas>
+      <canvas id="preview" class="drawing-area"></canvas>
+    </div>
+  </div>
+
+  <div class="game-container">
+    <h1>2. Simple game</h1>
+    <div class="text">Start the game by clicking the canvas!</div>
+
+    <canvas id="game"></canvas>
+  </div>
+</div>
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
