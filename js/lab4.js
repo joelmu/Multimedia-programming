@@ -54,6 +54,95 @@ preview.onmouseclick = function mouseclick(e) {
 // Game functions
 
 var game = document.getElementById("game");
-var gmx = game.getContext("2d")
+game.setAttribute('width', '600');
+game.setAttribute('height', '576');
+var gmx = game.getContext("2d");
 
-var score, ball, time;
+gmx.fillStyle = "rgb(103, 247, 15)";
+
+var score = 0;
+var time = 11;
+var gameON = false;
+var rectData = {};
+var rectSize = 80;
+var resultEl;
+
+function createRect(rectSize) {
+  gmx.clearRect(0, 0, gmx.canvas.width, gmx.canvas.height);
+  var rectDimension = {width: rectSize, height: rectSize};
+  var position = getRandomXY(rectDimension.width, rectDimension.height);
+  rectData = {
+    x: position.x,
+    y: position.y,
+    width: rectSize,
+    height: rectSize
+  };
+  gmx.fillRect(position.x, position.y, rectDimension.width, rectDimension.height);
+}
+
+function getMouseXY(game, event) {
+  var rect = game.getBoundingClientRect();
+  return {
+    x: event.clientX - game.offsetLeft,
+    y: event.clientY - game.offsetTop
+  };
+}
+
+function getRandomXY(rectWidth, rectHeight) {
+  return {
+    x: Math.floor(Math.random() * (game.width - rectWidth)),
+    y: Math.floor(Math.random() * (game.height - rectHeight))
+  };
+}
+
+function clickOnRect(mousePos, rectData) {
+  if (
+    mousePos.x >= rectData.x &&
+    mousePos.x <= rectData.x + rectData.width &&
+    mousePos.y >= rectData.y &&
+    mousePos.y <= rectData.y + rectData.height
+  ) {
+    return true;
+  }
+  return false;
+}
+
+game.addEventListener('click', function(evt) {
+  if (!gameON) {
+    start();
+  } else if (gameON) {
+    var mousePos = getMouseXY(game, evt);
+    if (clickOnRect(mousePos, rectData)) {
+      score += 1;
+      updateResult();
+      createRect(rectSize);
+    }
+  }
+});
+
+function start() {
+  score = 0;
+  time = 11;
+  gameON = true;
+  createRect(rectSize);
+  var interval = setInterval(function () {
+    time -= 1;
+    updateResult();
+    if (time == 0) {
+      gameON = false;
+      gameOver();
+      gmx.clearRect(0, 0, gmx.canvas.width, gmx.canvas.height);
+      clearInterval(interval);
+    }
+  }, 1000);
+}
+
+function updateResult() {
+  resultEl = document.getElementById('score');
+  resultEl.innerHTML = "SCORE: " + score + " -- " + "TIME LEFT: " + time;
+}
+
+function gameOver() {
+  resultEl = document.getElementById('result');
+  resultEl.innerHTML = " -- GAME OVER, SCORE: " + score;
+}

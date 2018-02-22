@@ -6,7 +6,7 @@
   </head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <script src="js/jQuery.min.js" charset="utf-8"></script>
-  <link rel="stylesheet" href="/css/lab5.css">
+  <!-- <link rel="stylesheet" href="/css/lab5.css"> -->
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -37,15 +37,54 @@
 
 
   <h1>1. Getting familiar with jQuery:</h1>
-  <h3>1. What you can do with the jQuery?</h3>
+  <h4>1. What you can do with the jQuery?</h4>
   <p>With jQuery you can easily select and manipulate DOM elements, handle events and effects, use Ajax and JSON and you can use backwards compatiblity methods. Also, jQuery is possible to extend by plug-ins and it supports multiple browsers.</p>
-  <h3>2. How it can help you as web developer?</h3>
+  <h4>2. How it can help you as web developer?</h4>
   <p>JQuery makes web developers work easier. With less writing you can do more.</p>
-  <h3>3. If you think our earlier participant list app, in what kind of issues you could use jQuery?</h3>
+  <h4>3. If you think our earlier participant list app, in what kind of issues you could use jQuery?</h4>
   <p>JQuery makes DOM manipulation easier. So it could be used for adding and removing participants.</p>
-  <h3>4. What are CDNs? What kind of benefits you get if you use them?</h3>
-  <p></p>
+  <h4>4. What are CDNs? What kind of benefits you get if you use them?</h4>
+  <p>Content Delivery Network is a system of distributed servers that deliver WEB content to user, based on the user's geographic location, the origin of the webpage and the server that delivers the content.</p>
+    <section>
+      <span>Benefits of using CDN are:</span>
+      <ul>
+        <li>Files may be pre-cached</li>
+        <li>Big CDN hosts have high-capacity</li>
+        <li>Built-in version control</li>
+        <li>Usage analytics</li>
+        <li>Boosts performance</li>
+      </ul>
+    </section>
+    <h1>2. More jQuery:</h1>
 
+    <div class="js-container">
+
+      <input type="text" class="js-name-textbox">
+      <input type="button" class="js-add-name-button" value="Add Name">
+
+      <div class="js-names-container"></div>
+
+      <input type="button" class="js-delete-name-button" value="Delete Names">
+
+    </div>
+
+    <h1>3. Ajax:</h1>
+
+    <div id="list-container">
+      <h4>Person list from ajax:</h4>
+      <div id="list">
+      </div>
+      <div id="table">
+      </div>
+      <button type="button" id="getAjax">Get Ajax</button>
+
+    </div>
+
+  <script src="js/jquery/eventDispatcher.js" charset="utf-8"></script>
+  <script src="js/jquery/listModel.js" charset="utf-8"></script>
+  <script src="js/jquery/listView.js" charset="utf-8"></script>
+  <script src="js/jquery/listController.js" charset="utf-8"></script>
+  <script src="js/jquery/app.js" charset="utf-8"></script>
   <script type="text/javascript" src="js/lab5.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
