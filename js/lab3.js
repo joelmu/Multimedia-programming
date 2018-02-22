@@ -54,7 +54,6 @@ function keyPress(event) {
   }
 }
 
-
 // audio element functions
 
 var sound = document.getElementById("sound");

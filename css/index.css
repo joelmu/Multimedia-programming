@@ -2,7 +2,6 @@ body { background-color:rgb(244, 253, 255);}
 p { color: rgb(29, 53, 55);}
 
 .def-box {
-  height: 60vh;
   width: 85vw;
-
+  height: 60vh;
 }

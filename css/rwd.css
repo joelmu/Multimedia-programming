@@ -19,9 +19,9 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
+	font: inherit;
+	font-size: 100%;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -43,15 +43,15 @@ q:before, q:after {
 	content: none;
 }
 table {
-	border-collapse: collapse;
 	border-spacing: 0;
+	border-collapse: collapse;
 }
 
 .header {
-	padding-left: .4em;
 	margin-bottom: 1em;
-	font-size: 1.5em;
+	padding-left: .4em;
 	background-color: rgb(113, 113, 113);
+	font-size: 1.5em;
 }
 
 .container {

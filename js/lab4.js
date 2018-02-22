@@ -10,7 +10,10 @@ preview.setAttribute('height', '600');
 var prew = preview.getContext("2d");
 var mouseIsDown = false;
 var lineThickness = 1;
-var cX, cY, eX, eY;
+var cX,
+  cY,
+  eX,
+  eY;
 
 preview.onmouseup = function mouseUp(e) {
   mouseIsDown = false;
@@ -69,7 +72,10 @@ var resultEl;
 
 function createRect(rectSize) {
   gmx.clearRect(0, 0, gmx.canvas.width, gmx.canvas.height);
-  var rectDimension = {width: rectSize, height: rectSize};
+  var rectDimension = {
+    width: rectSize,
+    height: rectSize
+  };
   var position = getRandomXY(rectDimension.width, rectDimension.height);
   rectData = {
     x: position.x,
@@ -96,12 +102,7 @@ function getRandomXY(rectWidth, rectHeight) {
 }
 
 function clickOnRect(mousePos, rectData) {
-  if (
-    mousePos.x >= rectData.x &&
-    mousePos.x <= rectData.x + rectData.width &&
-    mousePos.y >= rectData.y &&
-    mousePos.y <= rectData.y + rectData.height
-  ) {
+  if (mousePos.x >= rectData.x && mousePos.x <= rectData.x + rectData.width && mousePos.y >= rectData.y && mousePos.y <= rectData.y + rectData.height) {
     return true;
   }
   return false;
@@ -125,7 +126,7 @@ function start() {
   time = 11;
   gameON = true;
   createRect(rectSize);
-  var interval = setInterval(function () {
+  var interval = setInterval(function() {
     time -= 1;
     updateResult();
     if (time == 0) {
