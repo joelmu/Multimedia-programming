@@ -1,17 +1,19 @@
 function navsize() {
   var width = (window.innerWidth > 0) ? window.innerWidth : screen.width;
-  if (width<"800") {
-    var item = document.getElementById("sidenav");
+  var container = document.getElementById("container");
+  var item = document.getElementById("sidenav");
+  if (width<"900") {
     item.style.width = "100vw";
-    item.style.height = "20vh";
+    item.style.height = "35vh";
     item.style.textAlign = "center";
+    container.style.flexDirection = "column";
     document.getElementById("hr").style.display = "block";
 
   }else{
-      var item = document.getElementById("sidenav");
-      item.style.width = "15vw";
-      item.style.height = "130vh";
+      item.style.width = "60vw";
+      item.style.height = "100vh";
       item.style.textAlign = "left";
+      container.style.flexDirection = "row";
       document.getElementById("hr").style.display = "none";
   }
 }
