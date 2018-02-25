@@ -16,5 +16,4 @@ jsonCallback = function(result) {
   output += "</tbody></table>";
 
   displayResources.html(output);
-  $("table").addClass("table");
 }

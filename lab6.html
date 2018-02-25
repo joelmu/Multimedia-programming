@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Lab 6</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/lab6.css">
   <script src="js/jQuery.min.js" charset="utf-8"></script>
 </head>
 
@@ -38,16 +39,19 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="input">
-      <input type="text" name="search" placeholder="Search for pictures">
-      <button type="button" name="getButton"></button>
+  <div class="container mt-2">
+    <div class="input-group">
+      <input type="text" name="search" class="form-control input" placeholder="Search for pictures">
+      <button type="button" name="getButton" class="btn btn-info" onclick="getIMG()">Search</button>
     </div>
-    <div class="result">
+    <div class="center-block row">
 
     </div>
   </div>
 
+<script src="js/lab6.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 
 </html>

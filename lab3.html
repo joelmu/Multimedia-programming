@@ -41,30 +41,35 @@
     </div>
   </nav>
 
+  <div class="page-container">
 
-  <h1>1. Web Sockets</h1>
-  <div class="container">
-    <div id="messagelist">
-    </div>
-    <div class="input-group">
-      <input class="form-control" type="text" name="message" id="message" placeholder="message" onkeydown="keyPress(event)">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" id="sendbutton" onclick="send()">Send</button>
-        <button class="btn btn-outline-secondary" id="logo-button" onclick="logo()">LOGO</button>
+    <h1>1. Web Sockets</h1>
+    <div class="container">
+      <div id="messagelist">
+      </div>
+      <div class="input-group">
+        <input class="form-control" type="text" name="message" id="message" placeholder="message" onkeydown="keyPress(event)">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" id="sendbutton" onclick="send()">Send</button>
+          <button class="btn btn-outline-secondary" id="logo-button" onclick="logo()">LOGO</button>
+        </div>
       </div>
     </div>
-  </div>
 
-  <a href="mvc-personlist.html"><h1>2. Person list on local storage</h1></a>
+    <a href="mvc-personlist.html"><h1>2. Person list on local storage</h1></a>
 
-  <h1>3. Audio Element</h1>
-  <p>Radio stream from Basso radio.</p>
-  <audio id="sound">
+    <div class="mb-3">
+      <h1>3. Audio Element</h1>
+      <p>Radio stream from Basso radio</p>
+      <audio id="sound">
     <source src="http://stream.basso.ﬁ:8000/stream" type="audio/mp3"/>
   </audio>
-  <button type="button" name="play" class="play" onclick="play()">Play</button>
-  <button type="button" name="stop" class="stop" onclick="stop()">Stop</button>
-  <input id="volume" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+      <button type="button" name="play" class="play" onclick="play()">Play</button>
+      <button type="button" name="stop" class="stop" onclick="stop()">Stop</button>
+      <input id="volume" type="range" min="0" max="100" step="1" oninput="setVolume(this.value)" onchange="setVolume(this.value)"></input>
+
+    </div>
+  </div>
 
   <script src="js/jQuery.min.js" charset="utf-8"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
